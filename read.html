@@ -62,6 +62,8 @@
                 window.location.href = url;
             }
 
+            window.onload = loadArticle();
+
             function loadArticle() {
         // Get the 'article' parameter from the URL query string
         var urlParams = new URLSearchParams(window.location.search);
@@ -90,11 +92,7 @@
                 console.error(error);
                 articleText.innerText = 'Failed to load article.';
             });
-    }
-
-    // Call the loadArticle function when the page loads to fetch and display the article
-    window.addEventListener('load', loadArticle);
-            
+    }            
         </script>
     </body>
 </html>
