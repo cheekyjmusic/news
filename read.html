@@ -1,0 +1,100 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Cheeky News Article</title>
+        <link rel="icon" href="logo.png" type="image/x-icon">
+        <style>
+            body{
+                background-color: white;
+                color: black;
+                margin: 0;
+                font-family:Georgia, 'Times New Roman', Times, serif;
+            }
+            .header {
+                width: 100%;
+                height: 100px;
+                top: 0;
+                left: 0;
+                background-color: black;
+                display: flex;
+                align-items: center;
+            }
+            .header h1{
+                color: white;
+                margin-left: 20px;
+            }
+            .logo {
+                width: 50px;
+                height: 50px;
+                margin-left: 20px;
+            }
+        .button {
+            background-color: white;
+            border-radius: 2px;
+            width: fit-content;
+            padding: 5px;
+            cursor: pointer;
+            font-size: 18px;
+            margin: 5px;
+        }
+        .article-image{
+            height: 50%;
+            width: auto;
+        }
+        </style>
+    </head>
+    <body>
+        <header class="header">
+            <img class="logo" src="logo.png">
+            <h1>Cheeky News</h1>
+        </header>
+       <div class="article-container">
+        <p class="article"></p>
+        <img src="image.png" class="article-image">
+       </div>
+       
+        <script>
+            function goToNews(article){
+                window.location.href = 'https://cheekyjmusic.github.io/news/read?article=' + article;
+            }
+            function redirect(url){
+                window.location.href = url;
+            }
+
+            function loadArticle() {
+        // Get the 'article' parameter from the URL query string
+        var urlParams = new URLSearchParams(window.location.search);
+        var article = urlParams.get('article');
+        var articleText = document.querySelector('.article');
+        var articleImage = document.querySelector('article-image');
+
+        // Construct the URL to fetch the article content
+        var articleUrl = 'articles/' + article + '.txt';
+        articleImage.src = 'thumbnails/' + article + '.png';
+
+        // Use the fetch API to load the article content from the specified URL
+        fetch(articleUrl)
+            .then(response => {
+                if (response.ok) {
+                    return response.text();
+                } else {
+                    throw new Error('Failed to fetch article');
+                }
+            })
+            .then(articleContent => {
+                // Set the fetched article content in the 'articleText' element
+                articleText.innerText = articleContent;
+            })
+            .catch(error => {
+                console.error(error);
+                articleText.innerText = 'Failed to load article.';
+            });
+    }
+
+    // Call the loadArticle function when the page loads to fetch and display the article
+    window.addEventListener('load', loadArticle);
+            
+        </script>
+    </body>
+</html>
