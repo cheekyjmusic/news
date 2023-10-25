@@ -53,50 +53,51 @@
             <img class="logo" src="logo.png">
             <h1>Cheeky News</h1>
         </header>
-       <div class="article-container">
-        <p class="article">Loading Article...</p>
-        <img src="image.png" class="article-image">
-       </div>
-       
+        <div class="article-container">
+            <p class="article">Loading Article...</p>
+            <img src="image.png" class="article-image">
+        </div>
+
         <script>
-            function goToNews(article){
+            function goToNews(article) {
                 window.location.href = 'https://cheekyjmusic.github.io/news/read?article=' + article;
             }
-            function redirect(url){
+            
+            function redirect(url) {
                 window.location.href = url;
             }
 
-            window.onload = loadArticle();
+            window.onload = loadArticle;
 
             function loadArticle() {
-        // Get the 'article' parameter from the URL query string
-        var urlParams = new URLSearchParams(window.location.search);
-        var article = urlParams.get('article');
-        var articleText = document.querySelector('.article');
-        var articleImage = document.querySelector('article-image');
+                // Get the 'article' parameter from the URL query string
+                var urlParams = new URLSearchParams(window.location.search);
+                var article = urlParams.get('article');
+                var articleText = document.querySelector('.article');
+                var articleImage = document.querySelector('.article-image');
 
-        // Construct the URL to fetch the article content
-        var articleUrl = 'https://cheekyjmusic.github.io/news/articles/' + article + '.txt';
-        articleImage.src = 'https://cheekyjmusic.github.io/news/thumbnails/' + article + '.png';
+                // Construct the URL to fetch the article content
+                var articleUrl = 'https://cheekyjmusic.github.io/news/articles/' + article + '.txt';
+                articleImage.src = 'https://cheekyjmusic.github.io/news/thumbnails/' + article + '.png';
 
-        // Use the fetch API to load the article content from the specified URL
-        fetch(articleUrl)
-            .then(response => {
-                if (response.ok) {
-                    return response.text();
-                } else {
-                    throw new Error('Failed to fetch article');
-                }
-            })
-            .then(articleContent => {
-                // Set the fetched article content in the 'articleText' element
-                articleText.innerText = articleContent;
-            })
-            .catch(error => {
-                console.error(error);
-                articleText.innerText = 'Failed to load article.';
-            });
-    }            
+                // Use the fetch API to load the article content from the specified URL
+                fetch(articleUrl)
+                    .then(response => {
+                        if (response.ok) {
+                            return response.text();
+                        } else {
+                            throw new Error('Failed to fetch article');
+                        }
+                    })
+                    .then(articleContent => {
+                        // Set the fetched article content in the 'articleText' element
+                        articleText.innerText = articleContent;
+                    })
+                    .catch(error => {
+                        console.error(error);
+                        articleText.innerText = 'Failed to load article.';
+                    });
+            }
         </script>
     </body>
 </html>
