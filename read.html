@@ -42,6 +42,10 @@
             height: 50%;
             width: auto;
         }
+        .article {
+            font-size: 18px;
+            color: black;
+        }
         </style>
     </head>
     <body>
@@ -50,7 +54,7 @@
             <h1>Cheeky News</h1>
         </header>
        <div class="article-container">
-        <p class="article"></p>
+        <p class="article">Loading Article...</p>
         <img src="image.png" class="article-image">
        </div>
        
@@ -72,8 +76,8 @@
         var articleImage = document.querySelector('article-image');
 
         // Construct the URL to fetch the article content
-        var articleUrl = 'articles/' + article + '.txt';
-        articleImage.src = 'thumbnails/' + article + '.png';
+        var articleUrl = 'https://cheekyjmusic.github.io/news/articles/' + article + '.txt';
+        articleImage.src = 'https://cheekyjmusic.github.io/news/thumbnails/' + article + '.png';
 
         // Use the fetch API to load the article content from the specified URL
         fetch(articleUrl)
