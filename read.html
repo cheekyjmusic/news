@@ -42,6 +42,7 @@
             height: 50%;
             width: auto;
             border-radius: 2px;
+            opacity: 0;
         }
         .article {
             font-size: 18px;
@@ -83,6 +84,7 @@
                 // Construct the URL to fetch the article content
                 var articleUrl = 'https://cheekyjmusic.github.io/news/articles/' + article + '.txt';
                 articleImage.src = 'https://cheekyjmusic.github.io/news/thumbnails/' + article + '.png';
+                articleImage.style.opacity = 1;
 
                 // Use the fetch API to load the article content from the specified URL
                 fetch(articleUrl)
@@ -99,7 +101,7 @@
                     })
                     .catch(error => {
                         console.error(error);
-                        articleText.innerText = 'Failed to load article.';
+                        articleText.innerText = 'Failed to load article. Article id "' + article + '"';
                     });
             }
         </script>
