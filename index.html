@@ -92,12 +92,20 @@
         .article-description{
             font-size: 160%;
         }
+        .fullscreen-button {
+            width: 50px;
+            height: 50px;
+            margin-right: 20px;
+            cursor: pointer;
+            opacity: 0.75;
+        }
         </style>
     </head>
     <body>
         <header class="header">
             <img onclick="redirect('https://cheekyjmusic.github.io/news')" class="logo" src="logo.png">
             <h1>Cheeky News</h1>
+            <img onclick="fullscreen()" class="fullscreen-button" src="ui/fullscreen.svg">
         </header>
         <div class="middle-section">
             <p class="welcome">Welcome to Cheeky New's official page</p>
@@ -109,6 +117,13 @@
         </div>
         <div class="articles-container">
             <p>In today's edition of Cheeky News,</p>
+            <div onclick="goToNews(102623)" class="article">
+                <img class="article" src="thumbnails/102623.png">
+                <div class="description-container">
+                    <h2 class="article-title">Too many singles...</h2>
+                    <h3 class="article-description">Click here to learn about the rumoured singles.</h3>
+                </div>
+            </div>
             <div onclick="goToNews(102523)" class="article">
                 <img class="article" src="thumbnails/102523.png">
                 <div class="description-container">
@@ -120,7 +135,7 @@
                 <img class="article" src="thumbnails/10223.png">
                 <div class="description-container">
                     <h2 class="article-title">Yet another single announced...</h2>
-                    <h3 class="article-description">Click here to learn more about the single "Big Hippo" and other rumours...</h3>
+                    <h3 class="article-description">Click here to learn about the single "Big Hippo" and other rumours...</h3>
                 </div>
             </div>
             <div onclick="goToNews(92423)" class="article">
@@ -138,13 +153,6 @@
                 </div>
             </div>
         </div>
-        <script>
-            function goToNews(article){
-                window.location.href = 'https://cheekyjmusic.github.io/news/read?article=' + article;
-            }
-            function redirect(url){
-                window.location.href = url;
-            }
-        </script>
+        <script src="page.js"></script>
     </body>
 </html>
