@@ -11,24 +11,6 @@
                 margin: 0;
                 font-family:Georgia, 'Times New Roman', Times, serif;
             }
-            .header {
-                width: 100%;
-                height: 100px;
-                top: 0;
-                left: 0;
-                background-color: black;
-                display: flex;
-                align-items: center;
-            }
-            .header h1{
-                color: white;
-                margin-left: 20px;
-            }
-            .logo {
-                width: 50px;
-                height: 50px;
-                margin-left: 20px;
-            }
             .backgroundimage {
                 width: 100%;
                 height: auto;
@@ -93,11 +75,13 @@
             font-size: 160%;
         }
         </style>
+        <link rel="style" src="header.css">
     </head>
     <body>
         <header class="header">
             <img onclick="redirect('https://cheekyjmusic.github.io/news')" class="logo" src="logo.png">
             <h1>Cheeky News</h1>
+            <img onclick="fullscreen()" class="fullscreen-button" src="ui/fullscreen.svg">
         </header>
         <div class="middle-section">
             <p class="welcome">Buy a copy of cheeky news</p>
