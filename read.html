@@ -106,6 +106,7 @@
                     .then(articleContent => {
                         // Set the fetched article content in the 'articleText' element
                         articleText.innerText = articleContent;
+                        loadingContainer.style.display = 'none';
                     })
                     .catch(error => {
                         console.error(error);
