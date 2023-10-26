@@ -33,6 +33,32 @@
         .article-container {
             margin: 10px;
         }
+        .loading-container {
+            position: fixed;
+            height: calc(100vh - 100px);
+            width: 100%;
+            background-color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+				z-index: 999;
+        }
+        .loading{
+            width: 20vw;
+            height: 20vw;
+            bottom: 0;
+            left: 0;
+            animation: loading 0.5s linear infinite;
+        }
+        @keyframes loading {
+            0% {
+                transform: rotate(0);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
         </style>
         <link rel="stylesheet" type="text/css" href="header.css">
     </head>
@@ -42,6 +68,9 @@
             <h1>Cheeky News</h1>
             <img onclick="fullscreen()" class="fullscreen-button" src="ui/fullscreen.svg">
         </header>
+        <div class="loading-container">
+            <img class="loading" src="ui/loading.svg">
+        </div>
         <div class="article-container">
             <p class="article">Loading Article...</p>
             <img src="image.png" class="article-image">
@@ -57,10 +86,13 @@
                 var articleText = document.querySelector('.article');
                 var articleImage = document.querySelector('.article-image');
 
+                loadingContainer = document.querySelector('.loading-container');
+
                 // Construct the URL to fetch the article content
                 var articleUrl = 'https://cheekyjmusic.github.io/news/articles/' + article + '.txt';
                 articleImage.src = 'https://cheekyjmusic.github.io/news/thumbnails/' + article + '.png';
                 articleImage.style.opacity = 1;
+
 
                 // Use the fetch API to load the article content from the specified URL
                 fetch(articleUrl)
