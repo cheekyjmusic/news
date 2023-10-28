@@ -21,8 +21,8 @@
             margin: 5px;
         }
         .article-image{
-            height: 50%;
-            width: auto;
+            width: 80%;
+            height: auto;
             border-radius: 2px;
             opacity: 0;
         }
@@ -41,7 +41,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-				z-index: 999;
+			z-index: 999;
         }
         .loading{
             width: 20vw;
@@ -111,6 +111,7 @@
                     .catch(error => {
                         console.error(error);
                         articleText.innerText = 'Failed to load article. Article id "' + article + '"';
+                        loadingContainer.style.display = 'none';
                     });
             }
         </script>

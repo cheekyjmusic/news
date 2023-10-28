@@ -1,135 +1,168 @@
+<!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Cheeky News</title>
-        <link rel="icon" href="logo.png" type="image/x-icon">
-        <style>
-            body{
-                background-color: white;
-                color: black;
-                margin: 0;
-                font-family:Georgia, 'Times New Roman', Times, serif;
-            }
-            
-            .backgroundimage {
-                width: 100%;
-                height: auto;
-            }
-            .middle-section {
-            background-image: url('background.jpg');
-            background-size: cover;
-            background-position: center;
-            text-align: center;
-            padding: 20px;
-        }
-        .welcome{
-            font-size: 4.5vw;
-            font-weight: bold;
-        }
-        .button {
-            background-color: white;
-            border-radius: 2px;
-            width: fit-content;
-            padding: 5px;
-            cursor: pointer;
-            font-size: 18px;
-            margin: 5px;
-        }
-        .buttons-container {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .articles-container {
-            background-color: rgb(225, 203, 174);
-            padding: 10px;
-        }
-        .articles-container p {
-            font-size: 5vh;
-            font-weight: bold;
-            padding: 0;
-        }
-        .article {
-            background-color: rgba(255, 255, 255, 0.5);
-            border-radius: 2px;
-            font-size: 1.5vw;
-            padding: 5px;
-            padding-right: 0;
-            display: flex;
-            align-items: center;
-            margin-bottom: 10px;
-            cursor: pointer;
-        }
-        .article img {
-            width: 40vw;
-            height: auto;
-        }
-        .article-title {
-            font-size: 220%;
-            font-weight: bold;
-        }
-        .description-container{
-            margin-left: 15px;
-        }
-        .article-description{
-            font-size: 160%;
-        }
-        </style>
-        <link rel="stylesheet" type="text/css" href="header.css">
-    </head>
-    <body>
-        <header class="header">
-            <img onclick="redirect('https://cheekyjmusic.github.io/news')" class="logo" src="logo.png">
-            <h1>Cheeky News</h1>
-            <img onclick="fullscreen()" class="fullscreen-button" src="ui/fullscreen.svg">
-        </header>
-        <div class="middle-section">
-            <p class="welcome">Welcome to Cheeky New's official page</p>
-            <div class="buttons-container">
-                <div onclick="redirect('https://cheekyjmusic.github.io/news/buy')" class="button">Buy A Copy</div>
-                <div onclick="redirect('https://cheekyjmusic.github.io/music')" class="button">Music Museum</div>
-                <div onclick="redirect('https://www.youtube.com/@CheekyJ')" class="button">Youtube</div>
-            </div>
-        </div>
-        <div class="articles-container">
-            <p>In today's edition of Cheeky News,</p>
-            <div onclick="goToNews(102623)" class="article">
-                <img class="article" src="thumbnails/102623.png">
-                <div class="description-container">
-                    <h2 class="article-title">Too many singles...</h2>
-                    <h3 class="article-description">Click here to learn about the rumoured singles.</h3>
-                </div>
-            </div>
-            <div onclick="goToNews(102523)" class="article">
-                <img class="article" src="thumbnails/102523.png">
-                <div class="description-container">
-                    <h2 class="article-title">Cheeky Boomin: The backstory</h2>
-                    <h3 class="article-description">Click here to learn more about the continued backstory of Cheeky Boomin and songs that didn't make the cut.</h3>
-                </div>
-            </div>
-            <div onclick="goToNews(10223)" class="article">
-                <img class="article" src="thumbnails/10223.png">
-                <div class="description-container">
-                    <h2 class="article-title">Yet another single announced...</h2>
-                    <h3 class="article-description">Click here to learn about the single "Big Hippo" and other rumours...</h3>
-                </div>
-            </div>
-            <div onclick="goToNews(92423)" class="article">
-                <img class="article" src="thumbnails/92423.png">
-                <div class="description-container">
-                    <h2 class="article-title">The next single...</h2>
-                    <h3 class="article-description">Click here to learn more about the rumoured single "Hammock" and updates to the website...</h3>
-                </div>
-            </div>
-            <div onclick="goToNews(92223)" class="article">
-                <img class="article" src="thumbnails/92223.png">
-                <div class="description-container">
-                    <h2 class="article-title">"Cheeky Boomin" Merchandise: Coming Soon and more</h2>
-                    <h3 class="article-description">Click here to learn more about the backstory of Cheeky Boomin and the upcoming merchandise.</h3>
-                </div>
-            </div>
-        </div>
-        <script src="page.js"></script>
-    </body>
+<head>
+	<meta charset="UTF-8">
+	<meta content="width=device-width, initial-scale=1" name="viewport">
+	<title>Cheeky News</title>
+	<link href="logo.png" rel="icon" type="image/x-icon">
+	<style>
+	           body{
+	               background-color: white;
+	               color: black;
+	               margin: 0;
+	               font-family:Georgia, 'Times New Roman', Times, serif;
+	           }
+	           
+	           .backgroundimage {
+	               width: 100%;
+	               height: auto;
+	           }
+	           .middle-section {
+	           background-image: url('background.jpg');
+	           background-size: cover;
+	           background-position: center;
+	           text-align: center;
+	           padding: 20px;
+	       }
+	       .welcome{
+	           font-size: 4.5vw;
+	           font-weight: bold;
+	       }
+	       .button {
+	           background-color: white;
+	           border-radius: 2px;
+	           width: fit-content;
+	           padding: 5px;
+	           cursor: pointer;
+	           font-size: 18px;
+	           margin: 5px;
+	       }
+	       .buttons-container {
+	           display: flex;
+	           align-items: center;
+	           justify-content: center;
+	       }
+	       .articles-container {
+	           background-color: #e1cbae;
+	           padding: 10px;
+	       }
+	       .articles-container p {
+	           font-size: 5vh;
+	           font-weight: bold;
+	           padding: 0;
+	       }
+	       .article {
+	   background-color: #eedecc;
+	   border-radius: 2px;
+	   font-size: 1.5vw;
+	   padding: 5px;
+	   padding-right: 0;
+	   display: flex;
+	   align-items: center;
+	   margin-bottom: 10px;
+	   cursor: pointer;
+	   opacity: 0;
+	   transform: translateY(20px);
+	   transition: opacity 0.5s ease, transform 0.5s ease;
+	}
+
+	.article.show {
+	   opacity: 1;
+	   transform: translateY(0);
+	}
+
+	       .article:hover {
+	           background-color: #c3a88a;
+	       }
+	       .article img {
+	           width: 40vw;
+	           height: auto;
+	       }
+	       .article-title {
+	           font-size: 220%;
+	           font-weight: bold;
+	       }
+	       .description-container{
+	           margin-left: 15px;
+	       }
+	       .article-description{
+	           font-size: 160%;
+	       }
+	</style>
+	<link href="https://cheekyjmusic.github.io/news/header.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+	<header class="header">
+		<img class="logo" onclick="redirect('https://cheekyjmusic.github.io/news')" src="logo.png">
+		<h1>Cheeky News</h1><img class="fullscreen-button" onclick="fullscreen()" src="ui/fullscreen.svg">
+	</header>
+	<div class="middle-section">
+		<p class="welcome">Welcome to Cheeky New's official page</p>
+		<div class="buttons-container">
+			<div class="button" onclick="redirect('https://cheekyjmusic.github.io/news/buy')">
+				Buy A Copy
+			</div>
+			<div class="button" onclick="redirect('https://cheekyjmusic.github.io/music')">
+				Music Museum
+			</div>
+			<div class="button" onclick="redirect('https://www.youtube.com/@CheekyJ')">
+				Youtube
+			</div>
+		</div>
+	</div>
+	<div class="articles-container">
+		<p>In today's edition of Cheeky News,</p>
+		<div class="article" onclick="goToNews(102623)">
+			<img src="thumbnails/102623.png">
+			<div class="description-container">
+				<h2 class="article-title">Too many singles...</h2>
+				<h3 class="article-description">Click here to learn about the rumoured singles.</h3>
+			</div>
+		</div>
+		<div class="article" onclick="goToNews(102523)">
+			<img src="thumbnails/102523.png">
+			<div class="description-container">
+				<h2 class="article-title">Cheeky Boomin: The backstory</h2>
+				<h3 class="article-description">Click here to learn more about the continued backstory of Cheeky Boomin and songs that didn't make the cut.</h3>
+			</div>
+		</div>
+		<div class="article" onclick="goToNews(10223)">
+			<img src="thumbnails/10223.png">
+			<div class="description-container">
+				<h2 class="article-title">Yet another single announced...</h2>
+				<h3 class="article-description">Click here to learn about the single "Big Hippo" and other rumours...</h3>
+			</div>
+		</div>
+		<div class="article" onclick="goToNews(92423)">
+			<img src="thumbnails/92423.png">
+			<div class="description-container">
+				<h2 class="article-title">The next single...</h2>
+				<h3 class="article-description">Click here to learn more about the rumoured single "Hammock" and updates to the website...</h3>
+			</div>
+		</div>
+		<div class="article" onclick="goToNews(92223)">
+			<img src="thumbnails/92223.png">
+			<div class="description-container">
+				<h2 class="article-title">"Cheeky Boomin" Merchandise: Coming Soon and more</h2>
+				<h3 class="article-description">Click here to learn more about the backstory of Cheeky Boomin and the upcoming merchandise.</h3>
+			</div>
+		</div>
+	</div>
+	<script src="page.js">
+	</script> 
+	<script>
+	   const observer = new IntersectionObserver((entries) => {
+	       entries.forEach((entry) => {
+	           if (entry.isIntersecting) {
+	               entry.target.classList.add('show');
+	           } else {
+	               entry.target.classList.remove('show');
+	           }
+	       });
+	   });
+
+	   const hiddenElements = document.querySelectorAll('.article');
+	   hiddenElements.forEach((el) => observer.observe(el));
+	</script>
+</body>
 </html>
