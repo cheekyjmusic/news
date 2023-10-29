@@ -32,6 +32,7 @@
         }
         .article-container {
             margin: 10px;
+transition: all 0.2s ease;
         }
         .loading-container {
             position: fixed;
@@ -66,7 +67,7 @@
         <header class="header">
             <img onclick="redirect('https://cheekyjmusic.github.io/news')" class="logo" src="logo.png">
             <h1>Cheeky News</h1>
-            <img onclick="fullscreen()" class="fullscreen-button" src="ui/fullscreen.svg">
+            <img onclick="readerBackground()" class="settings-button" src="ui/settings.png">
         </header>
         <div class="loading-container">
             <img class="loading" src="ui/loading.svg">
@@ -77,7 +78,24 @@
         </div>
 
         <script>
-            window.onload = loadArticle;
+var darkread = false;
+
+function readerBackground() {
+  const readerbg = document.querySelector('.article-container');
+  if (darkread === false) {
+    readerbg.style.backgroundColor = 'black';
+    readerbg.style.color = 'white';
+    darkread = true;
+  } else {
+    readerbg.style.backgroundColor = 'white';
+    readerbg.style.color = 'black';
+    darkread = false;
+  }
+}
+
+
+
+       window.onload = loadArticle;
 
             function loadArticle() {
                 // Get the 'article' parameter from the URL query string
