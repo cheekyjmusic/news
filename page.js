@@ -30,7 +30,7 @@ function redirect(url){
 
 var settingsMenuOpened = false;
 function settings(){
-const settingsMenu = document.querySelector('.settings-containr');
+const settingsMenu = document.querySelector('.settings-container');
 if (settingsMenuOpened === false){
 settingsMenu.classList.add("settings-showing");
 settingsMenuOpened = true;
