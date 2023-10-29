@@ -69,7 +69,7 @@ transition: all 0.2s ease;
         <header class="header">
             <img onclick="redirect('https://cheekyjmusic.github.io/news')" class="logo" src="logo.png">
             <h1>Cheeky News</h1>
-            <img onclick="readerBackground()" class="settings-button" src="ui/settings.png">
+            <img onclick="settings()" class="settings-button" src="ui/settings.png">
         </header>
         <div class="loading-container">
             <img class="loading" src="ui/loading.svg">
@@ -84,7 +84,7 @@ var darkread = false;
 
 function readerBackground() {
   const readerbg = document.querySelector('.article-container');
-const article = document.querySelector('.article);
+const article = document.querySelector('.article');
   if (darkread === false) {
     readerbg.style.backgroundColor = 'black';
 document.body.style.backgroundColor = 'black';
