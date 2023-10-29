@@ -27,3 +27,6 @@
     opacity: 0.5;
     position: absolute;
 }
+.settings-container {
+display: none;
+}
