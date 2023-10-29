@@ -10,6 +10,7 @@
                 color: black;
                 margin: 0;
                 font-family:Georgia, 'Times New Roman', Times, serif;
+transition: all 0.2s ease;
             }
         .button {
             background-color: white;
@@ -29,6 +30,7 @@
         .article {
             font-size: 18px;
             color: black;
+transition: all 0.2s ease;
         }
         .article-container {
             margin: 10px;
@@ -82,13 +84,16 @@ var darkread = false;
 
 function readerBackground() {
   const readerbg = document.querySelector('.article-container');
+const article = document.querySelector('.article);
   if (darkread === false) {
     readerbg.style.backgroundColor = 'black';
-    readerbg.style.color = 'white';
+document.body.style.backgroundColor = 'black';
+    article.style.color = 'white';
     darkread = true;
   } else {
     readerbg.style.backgroundColor = 'white';
-    readerbg.style.color = 'black';
+document.body.style.backgroundColor = 'white';
+    article.style.color = 'black';
     darkread = false;
   }
 }
