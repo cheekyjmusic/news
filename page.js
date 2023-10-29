@@ -27,3 +27,14 @@ function goToNews(article){
 function redirect(url){
     window.location.href = url;
 }
+
+var settingsMenuOpened = false;
+function settings(){
+const settingsMenu = document.querySelector('.settings-containr');
+if (settingsMenuOpened === false){
+settingsMenu.classList.add("settings-showing");
+settingsMenuOpened = true;
+} else {
+settingsMenu.classList.remove("settings-showing");
+settingsMenuOpened = false;
+}
