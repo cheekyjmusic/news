@@ -28,5 +28,15 @@
     position: absolute;
 }
 .settings-container {
-display: none;
+background-color: white;
+height: 20vh;
+width: 100%;
+position: fixed;
+transform: translateY(-100%);
+}
+.settings-showing {
+    transform:translateY(0);
+}
+.settings-toggle {
+    cursor: pointer;
 }

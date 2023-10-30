@@ -38,3 +38,4 @@ settingsMenuOpened = true;
 settingsMenu.classList.remove("settings-showing");
 settingsMenuOpened = false;
 }
+}

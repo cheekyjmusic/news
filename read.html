@@ -62,8 +62,17 @@ transition: all 0.2s ease;
             }
         }
 
+        .settings-toggle {
+            display: flex;
+            align-items: center;
+        }
+        .settings-toggle p {
+            margin-right: 10px;
+            font-size: 10px;
+            color: black;
+        }
         </style>
-        <link rel="stylesheet" type="text/css" href="header.css">
+        <link rel="stylesheet" type="text/css" href="global.css">
     </head>
     <body>
         <header class="header">
@@ -78,11 +87,13 @@ transition: all 0.2s ease;
             <p class="article">Loading Article...</p>
             <img src="image.png" class="article-image">
         </div>
-<div class="settings-container>
-<img src="ui/fullscreen.svg" onclick="fullscreens()">
-</div>
-
-        <script>
+        <div class="settings-container">
+            <div class="settings-toggle">
+                <p>Fullscreen</p>
+                <img src="ui/fullscreen.svg" onclick="fullscreen()">
+            </div>
+        </div>
+<script>
 var darkread = false;
 
 function readerBackground() {
