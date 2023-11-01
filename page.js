@@ -27,3 +27,10 @@ function goToNews(article){
 function redirect(url){
     window.location.href = url;
 }
+
+//no right click
+document.addEventListener('contextmenu', function (event) {
+    if (event.target.tagName === 'IMG') {
+      event.preventDefault();
+    }
+  });
