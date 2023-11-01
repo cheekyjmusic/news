@@ -10,7 +10,6 @@
                 color: black;
                 margin: 0;
                 font-family:Georgia, 'Times New Roman', Times, serif;
-transition: all 0.2s ease;
             }
         .button {
             background-color: white;
@@ -30,11 +29,9 @@ transition: all 0.2s ease;
         .article {
             font-size: 18px;
             color: black;
-transition: all 0.2s ease;
         }
         .article-container {
             margin: 10px;
-transition: all 0.2s ease;
         }
         .loading-container {
             position: fixed;
@@ -62,23 +59,14 @@ transition: all 0.2s ease;
             }
         }
 
-        .settings-toggle {
-            display: flex;
-            align-items: center;
-        }
-        .settings-toggle p {
-            margin-right: 10px;
-            font-size: 10px;
-            color: black;
-        }
         </style>
-        <link rel="stylesheet" type="text/css" href="global.css">
+        <link rel="stylesheet" type="text/css" href="header.css">
     </head>
     <body>
         <header class="header">
             <img onclick="redirect('https://cheekyjmusic.github.io/news')" class="logo" src="logo.png">
             <h1>Cheeky News</h1>
-            <img onclick="settings()" class="settings-button" src="ui/settings.png">
+            <img onclick="fullscreen()" class="fullscreen-button" src="ui/fullscreen.svg">
         </header>
         <div class="loading-container">
             <img class="loading" src="ui/loading.svg">
@@ -87,34 +75,9 @@ transition: all 0.2s ease;
             <p class="article">Loading Article...</p>
             <img src="image.png" class="article-image">
         </div>
-        <div class="settings-container">
-            <div class="settings-toggle">
-                <p>Fullscreen</p>
-                <img src="ui/fullscreen.svg" onclick="fullscreen()">
-            </div>
-        </div>
-<script>
-var darkread = false;
 
-function readerBackground() {
-  const readerbg = document.querySelector('.article-container');
-const article = document.querySelector('.article');
-  if (darkread === false) {
-    readerbg.style.backgroundColor = 'black';
-document.body.style.backgroundColor = 'black';
-    article.style.color = 'white';
-    darkread = true;
-  } else {
-    readerbg.style.backgroundColor = 'white';
-document.body.style.backgroundColor = 'white';
-    article.style.color = 'black';
-    darkread = false;
-  }
-}
-
-
-
-       window.onload = loadArticle;
+        <script>
+            window.onload = loadArticle;
 
             function loadArticle() {
                 // Get the 'article' parameter from the URL query string
