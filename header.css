@@ -3,12 +3,12 @@
     height: 100px;
     top: 0;
     left: 0;
-    background-color: black;
     display: flex;
     align-items: center;
+
 }
 .header h1{
-    color: white;
+    color: black;
     margin-left: 20px;
 }
 .logo {
