@@ -5,9 +5,12 @@
         <title>Cheeky News Article</title>
         <link rel="icon" href="logo.png" type="image/x-icon">
         <style>
+            :root {
+                --theme-color: #e28080;
+            }
             body{
                 background: 
-    linear-gradient(to bottom, #e28080, #e28080) 0 0,
+    linear-gradient(to bottom, var(--theme-color), var(--theme-color)) 0 0,
     linear-gradient(to bottom, white, white) 0 100px;
                 color: black;
                 margin: 0;
@@ -31,6 +34,10 @@
         .article {
             font-size: 18px;
             color: black;
+        }
+        .article::first-letter {  
+        font-weight: bold;
+        font-size: 40px;
         }
         .article-container {
             margin: 10px;
@@ -64,6 +71,11 @@
             }
         }
 
+        .article a {
+            color: var(--theme-color);
+            text-decoration: underline;
+            cursor: pointer;
+        }
         </style>
         <link rel="stylesheet" type="text/css" href="https://cheekyjmusic.github.io/news/header.css">
     </head>
@@ -83,41 +95,41 @@
         <script>
             window.onload = loadArticle;
 
-            function loadArticle() {
-                // Get the 'article' parameter from the URL query string
-                var urlParams = new URLSearchParams(window.location.search);
-                var article = urlParams.get('article');
-                var articleText = document.querySelector('.article');
-                var articleImage = document.querySelector('.article-image');
+function loadArticle() {
+    var urlParams = new URLSearchParams(window.location.search);
+    var article = urlParams.get('article');
+    var articleText = document.querySelector('.article');
+    var articleImage = document.querySelector('.article-image');
 
-                loadingContainer = document.querySelector('.loading-container');
+    loadingContainer = document.querySelector('.loading-container');
 
-                // Construct the URL to fetch the article content
-                var articleUrl = 'https://cheekyjmusic.github.io/news/articles/' + article + '.txt';
-                articleImage.src = 'https://cheekyjmusic.github.io/news/thumbnails/' + article + '.png';
-                articleImage.style.opacity = 1;
+    var articleUrl = 'https://cheekyjmusic.github.io/news/articles/' + article + '.txt';
+    articleImage.src = 'https://cheekyjmusic.github.io/news/thumbnails/' + article + '.png';
+    articleImage.style.opacity = 1;
 
-
-                // Use the fetch API to load the article content from the specified URL
-                fetch(articleUrl)
-                    .then(response => {
-                        if (response.ok) {
-                            return response.text();
-                        } else {
-                            throw new Error('Failed to fetch article');
-                        }
-                    })
-                    .then(articleContent => {
-                        // Set the fetched article content in the 'articleText' element
-                        articleText.innerText = articleContent;
-                        loadingContainer.style.display = 'none';
-                    })
-                    .catch(error => {
-                        console.error(error);
-                        articleText.innerText = 'Failed to load article. Article id "' + article + '"';
-                        loadingContainer.style.display = 'none';
-                    });
+    fetch(articleUrl)
+        .then(response => {
+            if (response.ok) {
+                return response.text();
+            } else {
+                throw new Error('Failed to fetch article');
             }
+        })
+        .then(articleContent => {
+            // Replace text inside curly braces with links
+            articleContent = articleContent.replace(/{(.*?)}/g, function(match, group) {
+                return '<a href="' + group + '" target="_blank">' + group + '</a>';
+            });
+
+            articleText.innerHTML = articleContent;
+            loadingContainer.style.display = 'none';
+        })
+        .catch(error => {
+            console.error(error);
+            articleText.innerText = 'Failed to load article. Article id "' + article + '"';
+            loadingContainer.style.display = 'none';
+        });
+}
         </script>
         <script src="page.js"></script>
     </body>
