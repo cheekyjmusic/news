@@ -2,55 +2,81 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Rear Camera</title>
+  <title>Camera Overlay</title>
   <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: black;
+    }
+
     #videoContainer {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 100vh;
+      background-color: black;
+      overflow: hidden; /* Ensure the video container maintains its aspect ratio */
       position: relative;
     }
+
     #videoElement {
       width: 100%;
       height: auto;
+      object-fit: cover;
     }
-    #overlay {
+
+    .logo {
       position: absolute;
-      top: 10px;
+      bottom: 10px;
       left: 10px;
-      width: 200px;
-      height: 50px;
-      display: flex;
-      align-items: center;
-      font-family: Roboto, sans-serif;
-      justify-content: center;
-      background-color: white;
-      pointer-events: none;
+      width: 15%; /* Adjust width as needed */
+      height: auto;
     }
   </style>
 </head>
 <body>
   <div id="videoContainer">
     <video id="videoElement" autoplay></video>
-    <div id="overlay">
-      <p class="text">Cheeky News</p>
-    </div>
+    <img class="logo" src="https://cheekyjmusic.github.io/news/logo.png">
   </div>
   
   <script>
-    const video = document.getElementById('videoElement');
-    
-    // Function to start the rear camera
-    async function startRearCamera() {
-      const constraints = { video: { facingMode: { exact: 'environment' } } };
-      try {
-        const stream = await navigator.mediaDevices.getUserMedia(constraints);
+    // Access the camera
+    navigator.mediaDevices.getUserMedia({ video: true })
+      .then(function (stream) {
+        var video = document.getElementById('videoElement');
         video.srcObject = stream;
-      } catch (err) {
-        console.error('Error accessing the camera: ', err);
-        alert('No Camera');
+      })
+      .catch(function (err) {
+        console.log('Error accessing the camera: ' + err);
+      });
+
+    window.onload = function () {
+      const videoContainer = document.getElementById('videoContainer');
+      const videoElement = document.getElementById('videoElement');
+
+      function resizeVideoContainer() {
+        const windowHeight = window.innerHeight;
+        const windowWidth = window.innerWidth;
+        const aspectRatio = 4 / 3; // Assuming 4:3 aspect ratio
+
+        let videoHeight = windowHeight;
+        let videoWidth = videoHeight * aspectRatio;
+
+        if (videoWidth > windowWidth) {
+          videoWidth = windowWidth;
+          videoHeight = videoWidth / aspectRatio;
+        }
+
+        videoContainer.style.width = `${videoWidth}px`;
+        videoContainer.style.height = `${videoHeight}px`;
       }
+
+      window.onresize = resizeVideoContainer;
+      resizeVideoContainer(); // Initially set the video container size
     }
-    
-    // On page load, start with the default camera (rear camera)
-    startRearCamera();
   </script>
 </body>
 </html>
