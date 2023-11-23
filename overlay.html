@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Rear Camera</title>
+  <style>
+    #videoContainer {
+      position: relative;
+    }
+    #videoElement {
+      width: 100%;
+      height: auto;
+    }
+    #overlay {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      width: 200px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      font-family: Roboto, sans-serif;
+      justify-content: center;
+      background-color: white;
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body>
+  <div id="videoContainer">
+    <video id="videoElement" autoplay></video>
+    <div id="overlay">
+      <p class="text">Cheeky News</p>
+    </div>
+  </div>
+  
+  <script>
+    const video = document.getElementById('videoElement');
+    
+    // Function to start the rear camera
+    async function startRearCamera() {
+      const constraints = { video: { facingMode: { exact: 'environment' } } };
+      try {
+        const stream = await navigator.mediaDevices.getUserMedia(constraints);
+        video.srcObject = stream;
+      } catch (err) {
+        console.error('Error accessing the camera: ', err);
+        alert('No Camera');
+      }
+    }
+    
+    // On page load, start with the default camera (rear camera)
+    startRearCamera();
+  </script>
+</body>
+</html>
