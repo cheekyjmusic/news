@@ -29,10 +29,18 @@
 
     .logo {
       position: absolute;
-      bottom: 10px;
-      left: 10px;
+      bottom: 20px;
+      left: 20px;
       width: 15%; /* Adjust width as needed */
       height: auto;
+    }
+    .fullscreen {
+      cursor: pointer;
+      width: 50px;
+      height: auto;
+      filter: invert(100%);
+      opacity: 0.1;
+      
     }
   </style>
 </head>
@@ -41,6 +49,7 @@
     <video id="videoElement" autoplay></video>
     <img class="logo" src="https://cheekyjmusic.github.io/news/logo.png">
   </div>
+  <img onclick="fullscreen()" class="fullscreen" src="https://cdn-icons-png.flaticon.com/512/3354/3354155.png">
   
   <script>
     // Access the camera
@@ -77,6 +86,30 @@
       window.onresize = resizeVideoContainer;
       resizeVideoContainer(); // Initially set the video container size
     }
+
+    function fullscreen() {
+    if (!document.fullscreenElement) {
+        if (document.documentElement.requestFullscreen) {
+            document.documentElement.requestFullscreen();
+        } else if (document.documentElement.mozRequestFullScreen) {
+            document.documentElement.mozRequestFullScreen();
+        } else if (document.documentElement.webkitRequestFullscreen) {
+            document.documentElement.webkitRequestFullscreen();
+        } else if (document.documentElement.msRequestFullscreen) {
+            document.documentElement.msRequestFullscreen();
+        }
+    } else {
+        if (document.exitFullscreen) {
+            document.exitFullscreen();
+        } else if (document.mozCancelFullScreen) {
+            document.mozCancelFullScreen();
+        } else if (document.webkitExitFullscreen) {
+            document.webkitExitFullscreen();
+        } else if (document.msExitFullscreen) {
+            document.msExitFullscreen();
+        }
+    }
+}
   </script>
 </body>
 </html>
